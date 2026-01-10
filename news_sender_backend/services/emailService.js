@@ -19,7 +19,8 @@ const sendDigestEmailToUser = async (user) => {
 
   const html = generateEmailTemplate({
     userEmail: user.email,
-    groupedArticles
+    groupedArticles,
+    unsubscribeToken: user.unsubscribeToken
   });
 
   await sendEmail({
@@ -30,7 +31,7 @@ const sendDigestEmailToUser = async (user) => {
 };
 
 const sendDigestToAllUsers = async (frequency = "daily") => {
-  const users = await User.find({ frequency });
+  const users = await User.find({ frequency, isSubscribed: true });
 
   for (const user of users) {
     await sendDigestEmailToUser(user);

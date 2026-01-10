@@ -7,20 +7,27 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
       lowercase: true,
-      trim: true
+      trim: true,
     },
     topics: {
       type: [String],
-      required: true
+      required: true,
     },
     frequency: {
       type: String,
       enum: ["daily", "weekly"],
-      required: true
-    }
+      required: true,
+    },
+    isSubscribed: {
+      type: Boolean,
+      default: true,
+    },
+    unsubscribeToken: {
+      type: String,
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 

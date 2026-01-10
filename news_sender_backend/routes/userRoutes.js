@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../User/models/User1");
-
+const generateToken = require("../utils/generateToken");
 // POST /subscribe
 router.post("/subscribe", async (req, res) => {
   try {
@@ -26,7 +26,8 @@ router.post("/subscribe", async (req, res) => {
     const user = await User.create({
       email,
       topics,
-      frequency
+      frequency,
+      unsubscribeToken: generateToken()
     });
 
     res.status(201).json({

@@ -1,14 +1,16 @@
 const sentimentMap = {
   positive: "🟢 Positive",
   neutral: "🟡 Neutral",
-  negative: "🔴 Negative"
+  negative: "🔴 Negative",
 };
 
 const generateArticleHTML = (article) => {
   return `
     <div style="margin-bottom: 16px;">
       <h4 style="margin: 0;">
-        <a href="${article.link}" target="_blank" style="color: #1a73e8; text-decoration: none;">
+        <a href="${
+          article.link
+        }" target="_blank" style="color: #1a73e8; text-decoration: none;">
           ${article.title}
         </a>
       </h4>
@@ -34,7 +36,7 @@ const generateTopicSection = (topic, articles) => {
   `;
 };
 
-const generateEmailTemplate = ({ userEmail, groupedArticles }) => {
+const generateEmailTemplate = ({ userEmail, groupedArticles,unsubscribeToken  }) => {
   const topicSections = Object.keys(groupedArticles)
     .map((topic) => generateTopicSection(topic, groupedArticles[topic]))
     .join("");
@@ -54,6 +56,12 @@ const generateEmailTemplate = ({ userEmail, groupedArticles }) => {
       <p style="font-size: 12px; color: #777;">
         You are receiving this email because you subscribed to the News Digest system.
       </p>
+      <p style="font-size: 12px; color: #777;">
+             <a href="http://localhost:5000/api/unsubscribe/${unsubscribeToken}">
+       Unsubscribe
+    </a>
+  </p>
+
     </div>
   `;
 };
