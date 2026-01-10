@@ -3,7 +3,7 @@ const { GoogleGenAI } = require("@google/genai");
 const ai = new GoogleGenAI({
   apiKey: process.env.AI_API_KEY, // Gemini API key
 });
-  console.log( "this is key ",process.env.AI_API_KEY);
+ 
 const summarizeText = async (text) => {
   try {
     const response = await ai.models.generateContent({

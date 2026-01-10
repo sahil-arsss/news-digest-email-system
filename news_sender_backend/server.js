@@ -7,7 +7,7 @@ const userRoutes = require("./routes/userRoutes");
 const scrapeRoutes = require("./routes/scrapeRoutes");
 const articleRoutes = require("./routes/articleRoutes");
 const aiRoutes = require("./routes/aiRoutes");
-
+const sentimentRoutes = require("./routes/sentimentRoutes");
 
 const app = express();
 
@@ -27,7 +27,7 @@ app.use("/api/users", userRoutes);
 app.use("/api", scrapeRoutes);
 app.use("/api", articleRoutes);
 app.use("/api", aiRoutes);
-
+app.use("/api", sentimentRoutes);  
 
 const PORT = process.env.PORT || 5000;
 
