@@ -5,28 +5,36 @@ const articleSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     link: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
     topic: {
       type: String,
-      required: true
+      required: true,
     },
     source: {
       type: String,
-      required: true
+      required: true,
     },
     scrapedAt: {
       type: Date,
-      default: Date.now
-    }
+      default: Date.now,
+    },
+    summary: {
+      type: String,
+      default: "",
+    },
+    isSummarized: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 articleSchema.index({ topic: 1, createdAt: -1 });

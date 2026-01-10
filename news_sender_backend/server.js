@@ -1,10 +1,13 @@
-const express = require("express");
 const dotenv = require("dotenv");
+dotenv.config();
+const express = require("express");
+
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const scrapeRoutes = require("./routes/scrapeRoutes");
 const articleRoutes = require("./routes/articleRoutes");
-dotenv.config();
+const aiRoutes = require("./routes/aiRoutes");
+
 
 const app = express();
 
@@ -23,6 +26,8 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoutes);
 app.use("/api", scrapeRoutes);
 app.use("/api", articleRoutes);
+app.use("/api", aiRoutes);
+
 
 const PORT = process.env.PORT || 5000;
 
