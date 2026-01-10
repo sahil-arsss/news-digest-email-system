@@ -10,6 +10,9 @@ const aiRoutes = require("./routes/aiRoutes");
 const sentimentRoutes = require("./routes/sentimentRoutes");
 const emailPreviewRoutes = require("./routes/emailPreviewRoutes");
 const emailRoutes = require("./routes/emailRoutes");
+const startDailyJob = require("./cron/dailyJob");
+const startWeeklyJob = require("./cron/weeklyJob");
+
 const app = express();
 
 // Middleware
@@ -37,3 +40,6 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+startDailyJob();
+startWeeklyJob();

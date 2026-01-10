@@ -29,8 +29,8 @@ const sendDigestEmailToUser = async (user) => {
   });
 };
 
-const sendDigestToAllUsers = async () => {
-  const users = await User.find();
+const sendDigestToAllUsers = async (frequency = "daily") => {
+  const users = await User.find({ frequency });
 
   for (const user of users) {
     await sendDigestEmailToUser(user);
@@ -38,5 +38,6 @@ const sendDigestToAllUsers = async () => {
 
   return users.length;
 };
+
 
 module.exports = { sendDigestToAllUsers };

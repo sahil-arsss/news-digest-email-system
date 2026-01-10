@@ -4,7 +4,9 @@ const { sendDigestToAllUsers } = require("../services/emailService");
 
 router.get("/send-digest", async (req, res) => {
   try {
-    const count = await sendDigestToAllUsers();
+    const count = await sendDigestToAllUsers("daily");
+    //in case weekly
+    // const count = await sendDigestToAllUsers("weekly");
 
     res.json({
       message: "Digest emails sent successfully",
