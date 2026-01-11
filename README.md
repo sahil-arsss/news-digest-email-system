@@ -159,7 +159,7 @@ Health check endpoint
 
 📌 Ensures production readiness.
 
-🗣 One-Line System Design Summary (INTERVIEW GOLD)
+Summary-->
 
 “The system is a modular backend where cron jobs automate scraping, AI processing, and personalized email delivery, using MongoDB as a state-driven pipeline controller.”
 //user field
